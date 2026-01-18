@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Thank You | TAO Bearings</title>
+<meta name="robots" content="noindex,follow"/>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;padding:60px 18px;background:#0b0c10;color:#eef0f6}
+a{color:#eef0f6}
+.card{max-width:780px;margin:0 auto;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;background:rgba(255,255,255,.04)}
+p{color:rgba(238,240,246,.8);line-height:1.6}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7XMZ3R9CWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7XMZ3R9CWE');
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1600305737634872');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1600305737634872&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body>
+<div class="card">
+  <h1 style="margin:0 0 10px;">Thank you!</h1>
+  <p>We received your inquiry. We’ll reply soon.</p>
+  <p><a href="/">Back to Home</a></p>
+</div>
+
+<script>
+(function(){
+  function trackWhatsAppClick(url){
+    try{
+      if(window.gtag){ gtag('event','contact_click_whatsapp',{page_location: location.href, outbound: url}); }
+      if(window.fbq){ fbq('trackCustom','ContactWhatsApp',{outbound: url}); }
+    }catch(e){}
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && (e.target.closest ? e.target.closest('a') : null);
+    if(!a) return;
+    var href = a.getAttribute('href') || '';
+    if(href.indexOf('https://wa.me/') === 0){
+      trackWhatsAppClick(href);
+    }
+  }, true);
+})();
+</script>
+
+
+<script>
+(function(){
+  // Dedupe on refresh/back
+  if (!sessionStorage.getItem('tao_lead_tracked')) {
+    sessionStorage.setItem('tao_lead_tracked','1');
+    try {
+      if (window.gtag) gtag('event','generate_lead', { method:'zoho_form', page_location: location.href });
+      if (window.fbq) fbq('track','Lead');
+    } catch(e) {}
+  }
+})();
+</script>
+
+</body>
+</html>
