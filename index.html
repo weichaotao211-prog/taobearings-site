@@ -47,15 +47,25 @@
       --radius:18px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);
+      color:var(--text)
+    }
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 56px}
     header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 20px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-    .dot{width:10px;height:10px;border-radius:999px;background:rgba(120,140,255,.9);box-shadow:0 0 0 6px rgba(120,140,255,.18)}
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background:rgba(120,140,255,.9);
+      box-shadow:0 0 0 6px rgba(120,140,255,.18)
+    }
     nav{display:flex;gap:14px;flex-wrap:wrap}
     nav a{opacity:.85;border:1px solid transparent;padding:8px 10px;border-radius:12px}
     nav a:hover{border-color:var(--line);opacity:1}
+
     .hero{
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -72,8 +82,10 @@
     @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
     }
+
     h1{margin:0 0 10px;font-size:34px;line-height:1.15}
     .sub{margin:0;color:var(--muted);line-height:1.6}
+
     .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .btn{
       display:inline-block;
@@ -83,6 +95,7 @@
       background:rgba(255,255,255,.02);
       transition:.15s ease;
       font-weight:600;
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
     .btn.primary{
@@ -93,6 +106,7 @@
       border-color:rgba(255,255,255,.22);
       background:rgba(255,255,255,.04);
     }
+
     .rightCard{
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -109,7 +123,30 @@
       background:rgba(255,255,255,.03);
     }
     .stat b{display:block;margin-bottom:6px}
+
     footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+    /* Factory grid responsive */
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+    @media (max-width: 900px){
+      .grid4{grid-template-columns:repeat(2,1fr)}
+    }
+    .tile{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      overflow:hidden;
+      display:block;
+      background:rgba(255,255,255,.03);
+    }
+    .tile img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+      display:block;
+    }
+    @media (max-width: 900px){
+      .tile img{height:150px}
+    }
   </style>
 </head>
 
@@ -174,6 +211,37 @@
       </aside>
     </section>
 
+    <!-- Factory images (thumbs + open full) -->
+    <section style="margin-top:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h2 style="margin:0 0 6px;font-size:20px;">Factory & Production</h2>
+          <p style="margin:0;opacity:.78;line-height:1.6;">
+            Click any photo to view full size (fast thumbnails + HD on demand).
+          </p>
+        </div>
+        <a class="btn" href="/inquiry/">Get Quote</a>
+      </div>
+
+      <div class="grid4">
+        <a class="tile" href="/images/full/factory-workshop-01.webp" target="_blank" rel="noopener">
+          <img src="/images/thumbs/factory-workshop-01.webp" alt="Factory workshop" loading="lazy">
+        </a>
+
+        <a class="tile" href="/images/full/factory-production-02.webp" target="_blank" rel="noopener">
+          <img src="/images/thumbs/factory-production-02.webp" alt="Production process" loading="lazy">
+        </a>
+
+        <a class="tile" href="/images/full/factory-machines-03.webp" target="_blank" rel="noopener">
+          <img src="/images/thumbs/factory-machines-03.webp" alt="Machines" loading="lazy">
+        </a>
+
+        <a class="tile" href="/images/full/factory-line-04.webp" target="_blank" rel="noopener">
+          <img src="/images/thumbs/factory-line-04.webp" alt="Production line" loading="lazy">
+        </a>
+      </div>
+    </section>
+
     <footer>
       © TAO Bearings. All rights reserved.
     </footer>
@@ -184,8 +252,12 @@
   (function(){
     function trackWhatsAppClick(url){
       try{
-        if(window.gtag){ gtag('event','contact_click_whatsapp',{page_location: location.href, outbound: url}); }
-        if(window.fbq){ fbq('trackCustom','ContactWhatsApp',{outbound: url}); }
+        if(window.gtag){
+          gtag('event','contact_click_whatsapp',{page_location: location.href, outbound: url});
+        }
+        if(window.fbq){
+          fbq('trackCustom','ContactWhatsApp',{outbound: url});
+        }
       }catch(e){}
     }
     document.addEventListener('click', function(e){
